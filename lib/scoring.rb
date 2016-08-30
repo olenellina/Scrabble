@@ -32,7 +32,7 @@ class Scrabble::Scoring
     end
 
     if tie_counter > 0
-      minvalue = tie_hash[values].min
+      minvalue = tie_hash.values.min
 
       tie_hash.each do |k,v|
         if v == 7
@@ -51,7 +51,7 @@ class Scrabble::Scoring
   end
 end
 
-# puts Scrabble::Scoring.score("zzzzzzz")
+puts Scrabble::Scoring.highest_score_from(["apples", "jet", "z"])
 
 # case char
 #   when SCORE_TABLE[:1].value.include? char
