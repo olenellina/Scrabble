@@ -7,14 +7,14 @@ describe 'Testing scrabble scoring' do
     expect (Scrabble::Scoring.score("cat")).must_equal(5)
   end
 
-  # it 'return 57 points for the 7-letter word "letters" with bonus 50 points' do
-  #   expect (Scrabble::Scoring.score("letters")).must_equal(57)
-  # end
-  #
-  # it 'return 41 points for "oxyphenbutazone"' do
-  #   expect (Scrabble::Scoring.score("oxyphenbutazone")).must_equal(41)
-  # end
-  #
+  it 'return 57 points for the 7-letter word "letters" with bonus 50 points' do
+    expect (Scrabble::Scoring.score("letters")).must_equal(57)
+  end
+
+  it 'return 41 points for "oxyphenbutazone"' do
+    expect (Scrabble::Scoring.score("oxyphenbutazone")).must_equal(41)
+  end
+
   # it 'return the highest scoring word in an array. Return "apple" from ["banana", "apple", "dog"]' do
   #   expect (Scrabble::Scoring.highest_score_from(["banana", "apple", "dog"])).must_equal("apple")
   # end

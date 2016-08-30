@@ -3,13 +3,18 @@ require_relative '../scrabble'
 class Scrabble::Scoring
   def self.score(word)
     score = 0
+    if word.length == 7
+      score = 50
+    end
+
     word.each_char do |char|
-      score += Scrabble::SCORE_TABLE[char].value
+      score += Scrabble::SCORE_TABLE[char]
     end
     return score
   end
 
   def self.highest_score_from(arraywords)
+
   end
 end
 
