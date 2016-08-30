@@ -15,7 +15,9 @@ class Scrabble::Scoring
 
   def self.highest_score_from(arraywords)
     score = []
-    tie_array = []
+    tie_hash = {}
+    tie_counter = -1
+
     arraywords.each do |word|
       score << Scrabble::Scoring.score(word)
     end
@@ -24,14 +26,26 @@ class Scrabble::Scoring
 
     score.length.times do |x|
       if score[x] == maxvalue
-        tie_array << arraywords[x]
+        tie_counter += 1
+        tie_hash[arraywords[x]] = arraywords[x].length
       end
     end
 
-    tie_array.length.times do |x|
+    if tie_counter > 0
+      minvalue = tie_hash[values].min
 
+      tie_hash.each do |k,v|
+        if v == 7
+          return k
+        end
+      end
+
+      tie_hash.each do |key,value|
+        if value == minvalue
+          return key
+        end
+      end
     end
-
 
     return arraywords[index]
   end

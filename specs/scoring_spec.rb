@@ -23,11 +23,11 @@ describe 'Testing scrabble scoring' do
     expect (Scrabble::Scoring.highest_score_from(["cat", "dog"])).must_equal("cat")
   end
 
-  # it 'In case of a tie between unequal length words, return the first the word with the shortest length from the array. Return "jet" from ["jet", "apples"]' do
-  #   expect (Scrabble::Scoring.highest_score_from(["jet", "apples"])).must_equal("jet")
-  # end
-  #
-  # it 'In case of a tie between a 7-letter word and a word with shorter length, return the 7-letter word from the array. Return "aeioubg" from ["zzzzzz", "aeioubg"]' do
-  #   expect (Scrabble::Scoring.highest_score_from(["zzzzzz", "aeioubg"])).must_equal("aeioubg")
-  # end
+  it 'In case of a tie between unequal length words, return the first the word with the shortest length from the array. Return "jet" from ["jet", "apples", "z"]' do
+    expect (Scrabble::Scoring.highest_score_from(["jet", "apples", "z"])).must_equal("z")
+  end
+
+  it 'In case of a tie between a 7-letter word and a word with shorter length, return the 7-letter word from the array. Return "aeioubg" from ["zzzzzz", "aeioubg"]' do
+    expect (Scrabble::Scoring.highest_score_from(["zzzzzz", "aeioubg"])).must_equal("aeioubg")
+  end
 end
