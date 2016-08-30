@@ -14,7 +14,26 @@ class Scrabble::Scoring
   end
 
   def self.highest_score_from(arraywords)
+    score = []
+    tie_array = []
+    arraywords.each do |word|
+      score << Scrabble::Scoring.score(word)
+    end
+    maxvalue = score.max
+    index = score.index(maxvalue)
 
+    score.length.times do |x|
+      if score[x] == maxvalue
+        tie_array << arraywords[x]
+      end
+    end
+
+    tie_array.length.times do |x|
+
+    end
+
+
+    return arraywords[index]
   end
 end
 

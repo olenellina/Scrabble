@@ -15,14 +15,14 @@ describe 'Testing scrabble scoring' do
     expect (Scrabble::Scoring.score("oxyphenbutazone")).must_equal(41)
   end
 
-  # it 'return the highest scoring word in an array. Return "apple" from ["banana", "apple", "dog"]' do
-  #   expect (Scrabble::Scoring.highest_score_from(["banana", "apple", "dog"])).must_equal("apple")
-  # end
-  #
-  # it 'In case of a tie between equal length words, return the first winning word from the array. Return "cat" from ["cat", "dog"]' do
-  #   expect (Scrabble::Scoring.highest_score_from(["cat", "dog"])).must_equal("cat")
-  # end
-  #
+  it 'return the highest scoring word in an array. Return "apple" from ["banana", "apple", "dog"]' do
+    expect (Scrabble::Scoring.highest_score_from(["banana", "apple", "dog"])).must_equal("apple")
+  end
+
+  it 'In case of a tie between equal length words, return the first winning word from the array. Return "cat" from ["cat", "dog"]' do
+    expect (Scrabble::Scoring.highest_score_from(["cat", "dog"])).must_equal("cat")
+  end
+
   # it 'In case of a tie between unequal length words, return the first the word with the shortest length from the array. Return "jet" from ["jet", "apples"]' do
   #   expect (Scrabble::Scoring.highest_score_from(["jet", "apples"])).must_equal("jet")
   # end
