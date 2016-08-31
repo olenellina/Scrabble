@@ -26,6 +26,12 @@ class Scrabble::Player
   end
 
   def play(word)
+    word.each do |letter|
+      unless letter =~ [/A-Za-z/]
+        raise ArgumentError
+      end
+    end
+
     @plays_array << word
 
     if won?
@@ -52,8 +58,10 @@ class Scrabble::Player
   end
 
   def highest_scoring_word
+    return Scrabble::Scoring.highest_score_from(plays)
   end
 
   def highest_word_score
+    return Scrabble::Scoring.score(Scrabble::Scoring.highest_score_from(plays))
   end
 end

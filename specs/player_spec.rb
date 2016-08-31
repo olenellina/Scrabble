@@ -29,6 +29,15 @@ describe 'Testing scrabble player' do
   player3.play("quiz")
   player3.play("letters")
 
+  player4 = Scrabble::Player.new("Ann")
+  player4.play("cup")
+  player4.play("plate")
+
+
+  it "Testing to ensure raise ArugmentException if given a non-letter" do
+    expect(proc {player1.play("1234")}).must_raise ArgumentError
+  end
+
   it 'returns value of the @name instance variable' do
     expect (player1.name).must_equal("Ada")
   end
@@ -41,14 +50,14 @@ describe 'Testing scrabble player' do
     expect (player2.play("mango")).must_equal(8)
   end
 
-  # it 'returns false if the player has won' do
-  #   expect ().must_equal(false)
-  # end
-  #
-  # it 'returns score of the word' do
-  #   expect ().must_equal()
-  # end
-  #
+  it 'returns false if the player has won' do
+    expect (player3.play("word")).must_equal(false)
+  end
+
+  it 'returns score of the word if the player has not won' do
+    expect (player4.play("fork")).must_equal(11)
+  end
+
   it 'returns true if player has over 100 points.' do
     expect (player3.won?).must_equal(true)
   end
@@ -60,12 +69,12 @@ describe 'Testing scrabble player' do
   it 'returns the sum scores of played words' do
     expect (player2.total_score).must_equal(34)
   end
-  #
-  # it 'returns the highest scoring played word' do
-  #   expect ().must_equal()
-  # end
-  #
-  # it 'returns the highest scored for the highest scoring word' do
-  #   expect ().must_equal()
-  # end
+
+  it 'returns the highest scoring played word' do
+    expect (player3.highest_scoring_word).must_equal("zzzzzzz")
+  end
+
+  it 'returns the highest scored for the highest scoring word' do
+    expect (player3.highest_word_score).must_equal(120)
+  end
 end
