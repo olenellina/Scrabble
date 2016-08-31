@@ -26,8 +26,8 @@ class Scrabble::Player
   end
 
   def play(word)
-    word.each do |letter|
-      unless letter =~ [/A-Za-z/]
+    word.length.times do |k|
+      unless word[k] =~ /[[:alpha:]]/
         raise ArgumentError
       end
     end
