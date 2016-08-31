@@ -34,6 +34,11 @@ describe 'Testing scrabble player' do
   player4.play("plate")
 
 
+  player5 = Scrabble::Player.new("Adam")
+  player5.play("notebook")
+  player5.play("pen")
+
+
   it "Testing to ensure raise ArugmentException if given a non-letter" do
     expect(proc {player1.play("1234")}).must_raise ArgumentError
   end
@@ -67,7 +72,7 @@ describe 'Testing scrabble player' do
   end
 
   it 'returns the sum scores of played words' do
-    expect (player2.total_score).must_equal(34)
+    expect (player5.total_score).must_equal(19)
   end
 
   it 'returns the highest scoring played word' do

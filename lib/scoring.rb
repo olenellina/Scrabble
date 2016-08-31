@@ -31,50 +31,33 @@ class Scrabble::Scoring
       end
     end
 
+    result = arraywords[index]
+
     if tie_counter > 0
-      minvalue = tie_hash.values.min
+      result = Scrabble::Scoring.tie(tie_hash)
+    end
 
-      tie_hash.each do |k,v|
-        if v == 7
-          return k
-        end
-      end
+    return result
+  end
 
-      tie_hash.each do |key,value|
-        if value == minvalue
-          return key
-        end
+
+  def self.tie (tie_hash)
+    minvalue = tie_hash.values.min
+
+    tie_hash.each do |k,v|
+      if v == 7
+        return k
       end
     end
 
-    return arraywords[index]
+    tie_hash.each do |key,value|
+      if value == minvalue
+        return key
+      end
+    end
+
   end
 end
 
 # Testing:
 # puts Scrabble::Scoring.highest_score_from(["apples", "jet", "z"])
-
-# Old Code:
-# case char
-#   when SCORE_TABLE[:1].value.include? char
-#     score += 1
-#   when SCORE_TABLE[:2].value.include? char
-#     score += 2
-#   when SCORE_TABLE[:3].value.include? char
-#     score += 3
-#   when SCORE_TABLE[:4].value.include? char
-#     score += 4
-#   when SCORE_TABLE[:5].value.include? char
-#     score += 5
-#   when SCORE_TABLE[:8].value.include? char
-#     score += 8
-#   when SCORE_TABLE[:10].value.include? char
-#     score += 10
-# end
-
-# Scrabble::SCORE_TABLE.each do |key, value|
-#   if value.include? char
-#     score += key.to_i
-#     break
-#   end
-# end
