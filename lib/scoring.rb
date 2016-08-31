@@ -51,8 +51,10 @@ class Scrabble::Scoring
   end
 end
 
-puts Scrabble::Scoring.highest_score_from(["apples", "jet", "z"])
+# Testing:
+# puts Scrabble::Scoring.highest_score_from(["apples", "jet", "z"])
 
+# Old Code:
 # case char
 #   when SCORE_TABLE[:1].value.include? char
 #     score += 1
