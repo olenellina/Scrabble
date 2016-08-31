@@ -14,25 +14,41 @@ require_relative '../scrabble'
 require_relative 'scoring'
 
 class Scrabble::Player
-  @@plays_array = []
-  def self.name(name)
+  attr_accessor :name
+
+  def initialize (name)
     @name = name
-    return name
+    @plays_array = []
   end
 
-  def self.plays
-    return @@plays_array
+  def plays
+    return @plays_array
   end
 
-  def self.play(word)
-    @@plays_array << word
-    plays
+  def play(word)
+    @plays_array << word
+
+    if won?
+      return false
+    else
+      return Scrabble::Scoring.score(word)
+    end
   end
 
   def total_score
+    score = 0
+    plays.each do |word|
+      score += Scrabble::Scoring.score(word)
+    end
+    return score
   end
 
   def won?
+    if total_score > 100
+      return true
+    else
+      return false
+    end
   end
 
   def highest_scoring_word
