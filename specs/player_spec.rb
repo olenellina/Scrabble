@@ -11,7 +11,7 @@
 require_relative 'spec_helper'
 require_relative '../lib/scoring'
 require_relative '../lib/player'
-
+require_relative '../lib/tile'
 
 describe 'Testing scrabble player' do
   player1 = Scrabble::Player.new("Ada")
@@ -38,6 +38,7 @@ describe 'Testing scrabble player' do
   player5.play("notebook")
   player5.play("pen")
 
+  player6 = Scrabble::Player.new("John")
 
   it "Testing to ensure raise ArugmentException if given a non-letter" do
     expect(proc {player1.play("1234")}).must_raise ArgumentError
@@ -81,5 +82,9 @@ describe 'Testing scrabble player' do
 
   it 'returns the highest scored for the highest scoring word' do
     expect (player3.highest_word_score).must_equal(120)
+  end
+
+  it 'returns the collection of tiles drawn' do
+    expect (player6.tiles(2).class).must_equal(Array)
   end
 end

@@ -12,6 +12,8 @@
 
 require_relative '../scrabble'
 require_relative 'scoring'
+require_relative 'tile'
+
 
 class Scrabble::Player
   attr_accessor :name
@@ -63,5 +65,9 @@ class Scrabble::Player
 
   def highest_word_score
     return Scrabble::Scoring.score(Scrabble::Scoring.highest_score_from(plays))
+  end
+
+  def tiles(num)
+    return Scrabble::TileBag.draw_tiles(num)
   end
 end

@@ -17,22 +17,21 @@ class Scrabble::TileBag
   end
 
   def draw_tiles(num)
-
     if num <= 0 || num > 7
       raise ArgumentError
     end
 
-    sample_array = @default_tiles.sample(num)
+    sample_array = default_tiles.sample(num)
 
     sample_array.each do |x|
-      @default_tiles.delete_at(@default_tiles.index(x))
+      @default_tiles.delete_at(default_tiles.index(x))
     end
 
     return sample_array
   end
 
   def tiles_remaining
-    return @default_tiles.length
+    return default_tiles.length
   end
 
 end
