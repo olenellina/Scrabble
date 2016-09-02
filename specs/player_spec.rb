@@ -39,6 +39,7 @@ describe 'Testing scrabble player' do
   player5.play("pen")
 
   player6 = Scrabble::Player.new("John")
+  # tilebag1 = Scrabble::TileBag.new
 
   it "Testing to ensure raise ArugmentException if given a non-letter" do
     expect(proc {player1.play("1234")}).must_raise ArgumentError

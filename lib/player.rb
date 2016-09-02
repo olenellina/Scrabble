@@ -16,11 +16,13 @@ require_relative 'tile'
 
 
 class Scrabble::Player
-  attr_accessor :name
+  attr_accessor :name, :tilebag
+
 
   def initialize (name)
     @name = name
     @plays_array = []
+    @tilebag = Scrabble::TileBag.new
   end
 
   def plays
@@ -28,11 +30,10 @@ class Scrabble::Player
   end
 
   def play(word)
-    word.length.times do |k|
-      unless word[k] =~ /[[:alpha:]]/
+
+      unless Scrabble::Dictionary.dictionary(word)
         raise ArgumentError
       end
-    end
 
     @plays_array << word
 
@@ -68,6 +69,6 @@ class Scrabble::Player
   end
 
   def tiles(num)
-    return Scrabble::TileBag.draw_tiles(num)
+    return tilebag.draw_tiles(num)
   end
 end
